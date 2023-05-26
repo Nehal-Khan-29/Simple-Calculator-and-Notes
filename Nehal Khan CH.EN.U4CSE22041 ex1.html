@@ -1,0 +1,277 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>variables and arrays</title>
+        <!--link rel="stylesheet"  href="ex1style.css"-->
+
+        <style>
+            body{
+                background-image: linear-gradient(135deg,rgb(0, 47, 255),rgb(56, 157, 234),white);
+            }
+            
+            .container{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100%;
+                
+            }
+            
+            .box1{
+                background-color: white;
+                border-radius: 20px;
+                height: 320px;
+                width: 300px;
+                margin-right: 20px;
+            }
+            
+            .box2{
+                background-color: white;
+                border-radius: 20px;
+                height: 320px;
+                width: 300px;
+                margin-left: 20px;
+            }
+            
+            .box1_con{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 40%;   
+            }
+            
+            
+            .box1_con input,.result{
+                background-image: linear-gradient(135deg,rgb(0, 47, 255),rgb(56, 157, 234));
+                color: white;
+                border-radius: 5px;
+                height: 30px;
+                width: 200px; 
+                margin-top: 15px;
+            }
+            
+            .result{
+                padding-top: 2px;
+                text-align: center;
+                background-image: linear-gradient(135deg,rgb(56, 157, 234),rgb(0, 47, 255));
+            }
+            
+            .box1_con2{
+                
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 40%;   
+            }
+            
+            .box1_con2 button{
+                font-size: large;
+                background-image: linear-gradient(135deg,rgb(0, 47, 255),rgb(56, 157, 234));
+                border-radius: 5px;
+                height: 50px;
+                width: 60px; 
+                margin-top: 10px;
+                margin-left: 15px;
+                margin-right: 15px;
+                transition: 1s ease;
+            }
+            
+            .box1_con2 button:hover{
+                color:white;
+                font-weight: bold;
+                background-image: linear-gradient(135deg,rgb(56, 157, 234),rgb(0, 47, 255));
+            }
+            
+            .box2_con1{
+                
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                height: 20%;   
+            }
+            
+            .v3{
+                background-image: linear-gradient(135deg,rgb(0, 47, 255),rgb(56, 157, 234));
+                color: white;
+                border-radius: 5px;
+                height: 30px;
+                width: 200px; 
+                margin-top: 10px;
+            
+            }
+            
+            .result2{
+                display: block;
+                background-image: linear-gradient(135deg,rgb(0, 47, 255),rgb(56, 157, 234));
+                color: white;
+            
+                border-radius: 5px;
+                height: 160px;
+                width: 200px; 
+                scroll-behavior: smooth;
+                overflow-y: auto;
+                max-height: 160px;
+            }
+            
+            .change,.enter{
+                background-image: linear-gradient(135deg,rgb(0, 47, 255),rgb(56, 157, 234));
+                color: black;
+                margin-top: 15px;
+                border-radius: 5px;
+                height: 30px;
+                width: 90px; 
+                margin-left: 10px;
+                margin-right: 10px;
+                transition: 1s ease;
+                font-weight: bold;
+            }
+            
+            .change:hover,.enter:hover{
+                color: white;
+            }
+            
+            .box2_con2,.box2_con3,.head1,.head2{
+                display: flex;
+                justify-content: center;
+                align-items: center;  
+            }
+            
+            .head2{
+                font-size: 12px;
+            }
+            
+        </style>
+    </head>
+
+    <body>
+
+        <div class="container">
+            <div class="box1">
+                <div class="head1">CALCULATOR</div>
+                <div class="head2">using variable</div>
+                <div class="box1_con">
+                    <input class="v1" type="number"/>
+                    <input class="v2" type="number"/>
+                    <div class="result"></div>
+                </div>
+
+                <div class="box1_con2">
+                    <div class="box1_con3">
+                        <button class="+">+</button>
+                        <button class="-">-</button>
+                    </div>
+                    <div class="box1_con4">
+                        <button class="x">x</button>
+                        <button class="/">/</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="box2">
+                <div class="head1">NOTE</div>
+                <div class="head2">using array</div>
+                <div class="box2_con1">
+                    <input class="v3" type="text"/>
+                </div>
+
+                <div class="box2_con2">
+                    <div class="result2"></div>
+                </div>
+
+                <div class="box2_con3">
+                    <button class="change">Change</button>
+                    <button class="enter" onclick="addToResult()" >Enter</button>
+                </div>
+
+            </div>
+        </div>
+
+
+
+
+    <script>
+
+        const inputV1 = document.querySelector('.v1');
+        const inputV2 = document.querySelector('.v2');
+        const resultElement = document.querySelector('.result');
+
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(button => {
+            button.addEventListener('click', calculate);
+        });
+
+
+        function calculate(event) {
+
+        const symbol = event.target.classList[0];
+        const value1 = parseFloat(inputV1.value);
+        const value2 = parseFloat(inputV2.value);
+
+        let result;
+        switch (symbol) {
+            case '+':
+            result = value1 + value2;
+            break;
+            case '-':
+            result = value1 - value2;
+            break;
+            case 'x':
+            result = value1 * value2;
+            break;
+            case '/':
+            result = value1 / value2;
+            break;
+            default:
+            result = '';
+        }
+
+        resultElement.textContent = result;
+        }
+
+        //----------------------------------------------------------------------------------------------------------------
+
+        let dataArray = [];
+
+        function addToResult() {
+        const inputElement = document.querySelector('.v3');
+        const outputElement = document.querySelector('.result2');
+        const inputValue = inputElement.value;
+        dataArray.push(inputValue);
+
+        const outputArray = dataArray.map((value, index) => `${index}: ${value}`);
+        outputElement.innerHTML = outputArray.join('<br>');
+
+        inputElement.value = '';
+        }
+
+        function changeValue() {
+        const index = prompt('Enter the index:');
+        const newValue = prompt('Enter the new value:');
+
+        if (index !== null && newValue !== null) {
+            const parsedIndex = parseInt(index, 10);
+            if (!isNaN(parsedIndex) && parsedIndex >= 0 && parsedIndex < dataArray.length) {
+            dataArray[parsedIndex] = newValue;
+
+            const outputElement = document.querySelector('.result2');
+            const outputArray = dataArray.map((value, index) => `${index}: ${value}`);
+            outputElement.innerHTML = outputArray.join('<br>');
+            }
+        }
+        }
+
+        const changeButton = document.querySelector('.change');
+        changeButton.addEventListener('click', changeValue);
+
+    </script>
+    <!--script src="ex1js.js"></script-->
+
+    </body>
+
+</html>
