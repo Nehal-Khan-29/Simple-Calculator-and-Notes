@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculator and Notes</title>
+        <link rel="stylesheet"  href="ex1style.css">
+    </head>
+
+    <body>
+
+        <div class="container">
+            <div class="box1">
+                <div class="head1">CALCULATOR</div>
+                <div class="head2">using variable</div>
+                <div class="box1_con">
+                    <input class="v1" type="number"/>
+                    <input class="v2" type="number"/>
+                    <div class="result"></div>
+                </div>
+
+                <div class="box1_con2">
+                    <div class="box1_con3">
+                        <button class="+">+</button>
+                        <button class="-">-</button>
+                    </div>
+                    <div class="box1_con4">
+                        <button class="x">x</button>
+                        <button class="/">/</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="box2">
+                <div class="head1">NOTE</div>
+                <div class="head2">using array</div>
+                <div class="box2_con1">
+                    <input class="v3" type="text"/>
+                </div>
+
+                <div class="box2_con2">
+                    <div class="result2"></div>
+                </div>
+
+                <div class="box2_con3">
+                    <button class="change">Change</button>
+                    <button class="enter" onclick="addToResult()" >Enter</button>
+                </div>
+
+            </div>
+        </div>
+
+    <script src="ex1js.js"></script>
+
+    </body>
+
+</html>
